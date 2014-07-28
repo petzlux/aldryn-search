@@ -75,7 +75,7 @@ class TitleIndex(get_index_base()):
         queryset = Title.objects.public().filter(
             Q(page__publication_date__lt=timezone.now()) | Q(page__publication_date__isnull=True),
             Q(page__publication_end_date__gte=timezone.now()) | Q(page__publication_end_date__isnull=True),
-            Q(redirect__exact='') | Q(redirect__isnull=True),
+            #Q(redirect__exact='') | Q(redirect__isnull=True),
             language=language
         ).select_related('page').distinct()
         return queryset
